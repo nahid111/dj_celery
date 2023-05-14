@@ -2,10 +2,16 @@
 
 {% block content %}
 <div class="container">
-  <div class="jumbotron">
-    <h1>Celery with Django</h1>
-    <p>...</p>
-  </div>
+    <div class="jumbotron">
+        <h1>Celery with Django</h1>
+        {% if msg %}
+        <h2 class="text-success">Task complete.</h2>
+        <h3 class="text-primary">Result: {{msg}}</h3>
+        {% else %}
+        <h2 class="text-danger">A task is running.</h2>
+        <h3 class="text-info">Refresh to check status update.</h3>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
 
