@@ -1,6 +1,8 @@
 # Using celery with django
 <hr/>
 
+[following the doc](https://docs.celeryq.dev/en/stable/django/first-steps-with-django.html)
+
 ## Getting Started
 1. clone the repo & cd into it.
 2. Create a virtual environment for installing dependencies: 
@@ -10,6 +12,18 @@
 4. Install the dependencies in the virtual environment: 
 <br/><nbsp/>`pip install -r requirements.txt`
 
-## Running the Server
-1. Run the server: 
-<br/><nbsp/>`python manage.py runserver`
+## Running the app
+- Run redis in docker: 
+```shell
+docker run -d -p 6379:6379 --name mq redis
+```
+- Running the Celery worker server
+```shell
+celery -A dj_celery worker --loglevel=INFO
+```
+- Run the server: 
+```shell
+python manage.py runserver
+```
+
+
